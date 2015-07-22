@@ -29,3 +29,6 @@ Restaurants only. (No food trucks)
 
 I chose this topic because I frequent different areas in the bay and I tend to crave for tacos when someone asks what I would like to eat for lunch/dinner. This topic will be useful to everybody.
 '''
+
+'''
+July 22 (Mandatory): First Draft Due

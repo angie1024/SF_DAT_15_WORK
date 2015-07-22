@@ -122,3 +122,6 @@ majors['sample_employment_rate'] = majors.Employed / majors.Total
 # 12. Create a "sample_unemployment_rate" column
 # this column should be 1 - "sample_employment_rate"
 majors['sample_unemployment_rate'] = 1 - majors['sample_employment_rate']
+majors.columns
+majors.Unemployment_rate
+
