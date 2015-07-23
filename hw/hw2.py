@@ -1,4 +1,4 @@
-##### Part 1 #####
+##### Part 1 ##### 
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.cross_validation import train_test_split
@@ -94,6 +94,7 @@ Specificity = 227 / (227 + 2910.0)
 # 8. Perform one NEW operation of your 
 # choosing to try to boost your metrics!
 
+train_test_rmse(X, y)
 
 
 
@@ -116,12 +117,14 @@ female_avg_age = titanic.Age[titanic.Sex == 'female'].mean()
 # 5. Fill in missing MALE age values with the
 # average age of the remaining MALE ages
 titanic.Age[titanic.Sex == 'male'].isnull().sum()
-titanic.Age[titanic.Sex == 'male'].fillna(value=male_avg_age,inplace=True)
-titanic.Age
+#titanic.Age[titanic.Sex == 'male'].fillna(value=male_avg_age,inplace=True)
+titanic.Age = titanic.groupby("Sex").transform(lambda x: x.fillna(x.mean()))['Age']
+'''code provided by Patrick fills in both missing male and female cells'''
+
 # 6. Fill in missing FEMALE age values with the
 # average age of the remaining FEMALE ages
 titanic.Age[titanic.Sex == 'female'].isnull().sum()
-titanic.Age[titanic.Sex == 'female'].fillna(female_avg_age, inplace=True)
+#titanic.Age[titanic.Sex == 'female'].fillna(female_avg_age, inplace=True)
 
 # 7. Perform a Logistic Regression using
 # Survived as your response and age, wife
@@ -135,29 +138,30 @@ assorted_pred_class = logreg.predict(A)
 # 8. Show Accuracy, Sensitivity, Specificity and 
 # Confusion matrix
 prds = logreg.predict(A)
-print metrics.confusion_matrix(b, preds)
+print metrics.confusion_matrix(b, prds)
 
-Accuracy = 
-Sensitivity = 
-Specificity = 
+Accuracy = (523+26.0)/ 891
+Sensitivity = (26.0) / (316+26)
+Specificity = (523.0) / (523+26)
 
 
 # 9. now use ANY of your variables as predictors
 # Still using survived as a response to boost metrics!
-cfeature_cols = []
+cfeature_cols = ['Age','Pclass','Fare']
 
 C = titanic[cfeature_cols]
 logreg.fit(C, b)
 assorted_pred_class = logreg.predict(C)
 
 # 10. Show Accuracy, Sensitivity, Specificity
-prds = logreg.predict(C)
-print metrics.confusion_matrix(b, preds)
+preds1 = logreg.predict(C)
+print metrics.confusion_matrix(b, preds1)
 
-Accuracy = 
-Sensitivity = 
-Specificity = 
+Accuracy = (477+148.0)/ 891
+Sensitivity = (148.0) / (194+148)
+Specificity = (477.0) / (477+72)
 
+train_test_rmse(C, b)
 
 
 # REMEMBER TO USE
