@@ -26,7 +26,7 @@ import oauth2
 
 
 API_HOST = 'api.yelp.com'
-DEFAULT_TERM = 'dinner'
+DEFAULT_TERM = 'tacos'
 DEFAULT_LOCATION = 'San Francisco, CA'
 SEARCH_LIMIT = 20
 SEARCH_PATH = '/v2/search/'
